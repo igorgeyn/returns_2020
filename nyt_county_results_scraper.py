@@ -108,6 +108,8 @@ urls = ['https://www.nytimes.com/interactive/2020/11/03/us/elections/results-ala
         'https://www.nytimes.com/interactive/2020/11/03/us/elections/results-wyoming.html',
         ]
 
+df_all_states_final = pd.DataFrame()
+
 for index, u in enumerate(urls):
     html_content = requests.get(u).text
     soup = BeautifulSoup(html_content, "lxml")
@@ -152,4 +154,6 @@ for index, u in enumerate(urls):
     df['state'] = states[index]
     df.to_csv(states[index] + '.csv')
 
+    df_all_states_final = df_all_states_final.append(df)
 
+df_all_states_final.to_csv('df_all_states_final.csv')
