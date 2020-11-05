@@ -149,4 +149,7 @@ for index, u in enumerate(urls):
                                 '2016_margin', 'estim_vote_share', 
                                 'tot_vote_2020', 'abs_vote_2020'])
 
+    df['state'] = states[index]
     df.to_csv(states[index] + '.csv')
+
+
